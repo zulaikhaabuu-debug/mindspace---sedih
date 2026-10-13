@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindSpace - Emosi Sedih</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eff6ff;
+  color: #304563;
+  text-align: center;
+  padding: 25px;
+}
+h1 { color: #4778b8; }
+.card {
+  background: white;
+  border: 2px solid #d5e5fa;
+  border-radius: 20px;
+  padding: 25px;
+  max-width: 280px;
+  margin: 30px auto;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #dce7f4;
+}
+.emoji { display: block; font-size: 55px; margin-bottom: 12px; }
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(30,45,70,.6);
+  justify-content: center; align-items: center;
+  padding: 20px;
+}
+.overlay.show { display: flex; }
+.popup {
+  background: white; max-width: 400px; padding: 25px;
+  border-radius: 20px; position: relative; text-align: left;
+  animation: popUp .3s;
+}
+.popup h2 { color: #4778b8; }
+.popup p, .popup li { line-height: 1.7; }
+.tip { background: #edf5ff; padding: 12px; border-radius: 12px; }
+.close {
+  position: absolute; top: 8px; right: 10px;
+  border: none; border-radius: 50%; background: #e5efff;
+  font-size: 22px; cursor: pointer; width: 32px; height: 32px;
+}
+@keyframes popUp {
+  from { transform: scale(.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+<body>
+<h1>🌈 MindSpace</h1>
+<p>Kenali emosi anda dan pelajari cara menguruskannya.</p>
+
+<div class="card" onclick="openPopup()">
+  <span class="emoji">😢</span>
+  <strong>Emosi Sedih</strong>
+  <p>Klik untuk mengetahui lebih lanjut!</p>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeOutside(event)">
+  <div class="popup">
+    <button class="close" onclick="closePopup()">×</button>
+    <h2>😢 Emosi Sedih</h2>
+    <p>Sedih ialah perasaan yang dialami apabila seseorang menghadapi kehilangan, kekecewaan atau pengalaman yang menyakitkan.</p>
+    <p><strong>Contoh situasi:</strong><br>Berasa sedih apabila tidak dapat menyertai aktiviti bersama rakan atau mendapat keputusan yang kurang memuaskan.</p>
+    <div class="tip">
+      💡 <strong>Cara mengurus emosi sedih:</strong>
+      <ul>
+        <li>Terima perasaan sendiri dan beri masa untuk bertenang.</li>
+        <li>Berkongsi perasaan dengan orang yang dipercayai.</li>
+        <li>Lakukan aktiviti yang disukai.</li>
+        <li>Ingat bahawa meminta bantuan bukan tanda kelemahan.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+function openPopup() {
+  document.getElementById("overlay").classList.add("show");
+}
+function closePopup() {
+  document.getElementById("overlay").classList.remove("show");
+}
+function closeOutside(event) {
+  if (event.target.id === "overlay") closePopup();
+}
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") closePopup();
+});
+</script>
+</body>
+</html>
